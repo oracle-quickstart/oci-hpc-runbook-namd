@@ -236,9 +236,9 @@ If you would rather connect without a SSH tunnel, you will need to open ports 59
 
  5. Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-shared/blob/master/images/addIngress.png" height="20">.
 
- 6. Now you should be able to VNC to the address: ip.add.re.ss:5900. Once you accessed your VNC session, you should go into Applications --> System Tools --> Settings.  
+ 6. Now you should be able to VNC to the address: ip.address:5900. Once you accessed your VNC session, you should go into Applications --> System Tools --> Settings.  
 
-    <img src="https://github.com/oci-hpc/oci-hpc-runbook-shared/raw/master/images/CentOSSeetings.jpg" height="100"> 
+    <img src="https://github.com/oci-hpc/oci-hpc-runbook-shared/raw/master/images/CentOSSeetings.jpg" height="300"> 
 
  7. In the power options, set the Blank screen timeout to "Never". If you do get locked out of your user session, you can ssh to the instance and set a password for the ubuntu user. 
     ```
