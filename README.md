@@ -25,8 +25,8 @@ Note that if you are using resource manager, obtain the private key from the out
 ## Deployment
 
 Deploying this architecture on OCI can be done in different ways:
-* The [resource Manager](https://github.com/oracle-quickstart/oci-hpc-runbook-gromacs/blob/main/Documentation/ResourceManager.md) let you deploy the infrastructure from the console. Only relevant variables are shown but others can be changed in the zip file. 
-* The [web console](https://github.com/oracle-quickstart/oci-hpc-runbook-gromacs/blob/main/Documentation/ManualDeployment.md) let you create each piece of the architecture one by one from a webbrowser. This can be used to avoid any terraform scripting or using existing templates. 
+* The [resource Manager](https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/Documentation/ResourceManager.md) let you deploy the infrastructure from the console. Only relevant variables are shown but others can be changed in the zip file. 
+* The [web console](https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/Documentation/ManualDeployment.md) let you create each piece of the architecture one by one from a webbrowser. This can be used to avoid any terraform scripting or using existing templates. 
 
 ## Licensing
 See [Third Party Licenses](https://github.com/oci-hpc/oci-hpc-runbook-namd/blob/master/Third_Party_Licenses) for NAMD and terraform licensing, including dependencies used in this tutorial.
