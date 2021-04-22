@@ -1,4 +1,4 @@
-# <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/master/images/namd-logo.png" height="60" width="300"> Runbook
+# <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/images/namd-logo.png" height="60" width="300"> Runbook
 
 ## Deployment through Resource Manager
 
