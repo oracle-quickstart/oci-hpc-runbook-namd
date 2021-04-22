@@ -1,4 +1,4 @@
-# <img src="https://github.com/oci-hpc/oci-hpc-runbook-namd/blob/master/images/namd-logo.png" height="60" width="300"> Runbook
+# <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/images/namd-logo.png" height="60" width="300"> Runbook
 
 ## Introduction
 This Runbook provides the steps to deploy a GPU machine on Oracle Cloud Infrastructure, install NAMD, and run a model using NAMD software.  
@@ -7,13 +7,13 @@ NAMD is a molecular dynamics software that simulates the movements of atoms in b
 
 NAMD is built on Charm++ and Converse, and can run on high performance computers to execute parallel processing. It was developed by the University of Illinois. More information can be found [here](http://charm.cs.illinois.edu/research/moldyn).
 
-<img align="center" src="https://github.com/oci-hpc/oci-hpc-runbook-namd/blob/master/images/1bh5_protein_animated.gif" height="180" > 
+<img align="center" src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/images/1bh5_protein_animated.gif" height="180" > 
 
 ## Architecture
 The architecture for this runbook is simple, a single machine running inside of an OCI VCN with a public subnet.  
 Since a GPU instance is used, block storage is attached to the instance and installed with the NAMD application. 
 The instance is located in a public subnet and assigned a public ip, which can be accessed via ssh.
-<img src="https://github.com/oci-hpc/oci-hpc-runbook-namd/blob/master/images/GPU_arch_draft.png" height ="550" width="1200">
+<img src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/images/GPU_arch_draft.png" height ="550" width="1200">
 
 ## Login
 Login to the using opc as a username:
@@ -29,7 +29,7 @@ Deploying this architecture on OCI can be done in different ways:
 * The [web console](https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/Documentation/ManualDeployment.md) let you create each piece of the architecture one by one from a webbrowser. This can be used to avoid any terraform scripting or using existing templates. 
 
 ## Licensing
-See [Third Party Licenses](https://github.com/oci-hpc/oci-hpc-runbook-namd/blob/master/Third_Party_Licenses) for NAMD and terraform licensing, including dependencies used in this tutorial.
+See [Third Party Licenses](https://github.com/oracle-quickstart/oci-hpc-runbook-namd/tree/main/Third_Party_Licenses) for NAMD and terraform licensing, including dependencies used in this tutorial.
 
 ## Running the Application
 If the provided terraform scripts are used to launch the application, NAMD with CUDA is installed in the /mnt/block/NAMD/NAMD_2.13_CUDA folder and two example models are available in /mnt/block/work/NAMD_models folder. 
