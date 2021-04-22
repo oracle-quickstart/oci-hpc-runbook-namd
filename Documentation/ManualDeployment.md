@@ -64,7 +64,7 @@ Before creating an instance, we need to configure a Virtual Cloud Network.
 
  4. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/create.png" height="25">.
 
- 5. After a few minutes, the instances will turn green, meaning it is up and running. Click on the instance name in the console to identify the public IP. You can now connect using `ssh ubuntu@xx.xx.xx.xx` from the machine using the key that was provided during the creation. 
+ 5. After a few minutes, the instances will turn green, meaning it is up and running. Click on the instance name in the console to identify the public IP. You can now connect using `ssh opc@xx.xx.xx.xx` from the machine using the key that was provided during the creation. 
 
 **If you are using Oracle Linux 7.6 on a machine with GPU's, during instance definition, select the advanced options at the bottom-->select image. Ensure the image specified is the one that contains GPU in its name. That will remove the need to install any driver.**
 
@@ -155,7 +155,7 @@ If you want to view and perform post-processing on a separate node than the main
 
  4. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/create_instance.png" height="20">
 
- 5. After a few minutes, the instances will turn green, meaning it is up and running. Click on the instance name in the console to identify the public IP. You can now connect using `ssh ubuntu@xx.xx.xx.xx` from the machine using the key that was provided during the creation. 
+ 5. After a few minutes, the instances will turn green, meaning it is up and running. Click on the instance name in the console to identify the public IP. You can now connect using `ssh opc@xx.xx.xx.xx` from the machine using the key that was provided during the creation. 
 
 
 ### Creating a Network File System
@@ -199,19 +199,19 @@ sudo mount <visualization node private IP address>:/mnt/share /mnt/share
 ### Set up a VNC
 If you used terraform to create the cluster, this step has been done already for the GPU instance.
 
-By default, the only access to the machines is through SSH. If you want to see the NAMD interface, you will need to set up a VNC connection. The following script will work for the default user ubuntu. The password for the vnc session is set as "password" but it can be edited in the next commands. 
+By default, the only access to the machines is through SSH. If you want to see the NAMD interface, you will need to set up a VNC connection. The following script will work for the default user opc. The password for the vnc session is set as "password" but it can be edited in the next commands. 
 
 ```
 sudo yum -y groupinstall "Server with GUI"
 sudo yum -y install tigervnc-server mesa-libGL
 sudo systemctl set-default graphical.target
 sudo cp /usr/lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:0.service
-sudo sed -i 's/<USER>/ubuntu/g' /etc/systemd/system/vncserver@:0.service
-sudo mkdir /home/ubuntu/.vnc/
-sudo chown ubuntu:ubuntu /home/ubuntu/.vnc
-echo "password" | vncpasswd -f > /home/ubuntu/.vnc/passwd
-chown ubuntu:ubuntu /home/ubuntu/.vnc/passwd
-chmod 600 /home/ubuntu/.vnc/passwd
+sudo sed -i 's/<USER>/opc/g' /etc/systemd/system/vncserver@:0.service
+sudo mkdir /home/opc/.vnc/
+sudo chown opc:opc /home/opc/.vnc
+echo "password" | vncpasswd -f > /home/opc/.vnc/passwd
+chown opc:opc /home/opc/.vnc/passwd
+chmod 600 /home/opc/.vnc/passwd
 sudo systemctl start vncserver@:0.service
 sudo systemctl enable vncserver@:0.service
 ```
@@ -240,9 +240,9 @@ If you would rather connect without a SSH tunnel, you will need to open ports 59
 
     <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/CentOSSeetings.jpg" height="300"> 
 
- 7. In the power options, set the Blank screen timeout to "Never". If you do get locked out of your user session, you can ssh to the instance and set a password for the ubuntu user. 
+ 7. In the power options, set the Blank screen timeout to "Never". If you do get locked out of your user session, you can ssh to the instance and set a password for the opc user. 
     ```
-    sudo passwd ubuntu
+    sudo passwd opc
     ```
 
 ## NAMD Installation
