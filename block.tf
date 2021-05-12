@@ -1,3 +1,6 @@
+## Copyright © 2020, Oracle and/or its affiliates. 
+## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+
 resource "oci_core_volume" "GPU_BV" {
     count               = var.gpu_node_count
     availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name

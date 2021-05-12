@@ -13,7 +13,12 @@ NAMD is built on Charm++ and Converse, and can run on high performance computers
 The architecture for this runbook is simple, a single machine running inside of an OCI VCN with a public subnet.  
 Since a GPU instance is used, block storage is attached to the instance and installed with the NAMD application. 
 The instance is located in a public subnet and assigned a public ip, which can be accessed via ssh.
-<img src="https://github.com/oracle-quickstart/oci-hpc-runbook-namd/blob/main/images/GPU_arch_draft.png" height ="550" width="1200">
+
+For details of the architecture, see [_Deploy molecular dynamics and NAMD applications_](https://docs.oracle.com/en/solutions/deploy-namd-on-oci/index.html)
+
+## Architecture Diagram
+
+![](./images/GPU_arch_draft.png)
 
 # Login
 Login to the using opc as a username:
