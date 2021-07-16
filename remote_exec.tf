@@ -42,7 +42,7 @@ resource "null_resource" "remote-exec-GPU" {
 
     inline = [
     "sudo chmod 755 ~/gpu-start.sh",
-    "~/gpu-start.sh ${oci_core_virtual_network.GPU_VCN.cidr_block} \"${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.iqn, list("")), 0)}\" ${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.ipv4, list("")), 0)}:${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.port, list("")), 0)} | tee ~/gpu-start.log",
+    "~/gpu-start.sh ${oci_core_virtual_network.GPU_VCN.cidr_block} \"${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.iqn, tolist([""])), 0)}\" ${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.ipv4, tolist([""])), 0)}:${element(concat(oci_core_volume_attachment.GPU_BlockAttach[count.index].*.port, tolist([""])), 0)} | tee ~/gpu-start.log",
     "mv ~/gpu-start.log /mnt/block/logs/",
     ]
   }
