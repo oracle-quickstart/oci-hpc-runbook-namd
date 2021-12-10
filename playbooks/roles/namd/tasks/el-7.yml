@@ -1,0 +1,95 @@
+---
+# tasks file for namd
+- name: Create /nfs/scratch/namd
+  become: true
+  file:
+    path: "/nfs/scratch/namd"
+    state: directory
+    owner: opc
+    mode: 0770
+    group: opc
+    recurse: yes
+    
+- name: download namd binaries
+  get_url: 
+    url: "{{namd_binaries}}"  
+    dest: "/nfs/scratch/namd"
+    mode: 0770
+
+- name: untar namd binaries
+  unarchive: 
+    src: "{{ item }}" 
+    dest: "/nfs/scratch/namd" 
+  with_fileglob:
+    - "/nfs/scratch/namd/*"
+
+- name: change permissions on namd folder
+  become: true 
+  shell: "chmod +x /nfs/scratch/namd/*"
+ 
+# Post Installation 
+
+- name: make models directory
+  ansible.builtin.file:
+    path: "/nfs/scratch/work"
+    state: directory
+    recurse: yes
+    owner: opc
+    group: opc
+    mode: '0777'
+
+- name: download model 
+  get_url: 
+    url: "{{namd_model}}"
+    dest: "/nfs/scratch/work"
+    mode: '0777' 
+
+- name: untar namd data
+  unarchive: 
+    src: "{{ item }}" 
+    dest: "/nfs/scratch/work" 
+  with_fileglob:
+    - "/nfs/scratch/work/*"
+
+  # visualization
+
+- name: Create /nfs/scratch/vmd
+  become: true
+  file:
+    path: "/nfs/scratch/vmd"
+    state: directory
+    owner: opc
+    mode: 0770
+    group: opc
+    recurse: yes
+
+- name: Download VMD
+  get_url: 
+    url: "https://objectstorage.us-phoenix-1.oraclecloud.com/p/bpR0VM0GaNlc4yQsGLwO4lZwneKxXwN8vUdtyKcVZcE/n/hpc/b/HPC_APPS/o/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz"
+    dest: "/nfs/scratch/vmd"
+    mode: '0777' 
+
+- name: untar VMD folder
+  unarchive: 
+    src: "{{ item }}" 
+    dest: "/nfs/scratch/vmd" 
+  with_fileglob:
+    - "/nfs/scratch/vmd/*"
+
+- name: change permissions on vmd-1.9.3 folder
+  become: true 
+  shell: "chmod +x /nfs/scratch/vmd/vmd-1.9.3/*"
+
+- name: update bashrc
+  blockinfile:
+    dest: "/home/opc/.bashrc"
+    block: |
+      export PATH=/nfs/scratch/namd/NAMD_2.13_Linux-x86_64-multicore-CUDA/:$PATH
+      export PATH=/nfs/scratch/work/NAMD_models/:$PATH
+      export PATH=/nfs/scratch/vmd/vmd-1.9.3/:$PATH
+    # marker: '# {mark} ANSIBLE MANAGED BLOCK - virtualenv'
+    insertbefore: EOF
+    create: yes 
+
+
+
