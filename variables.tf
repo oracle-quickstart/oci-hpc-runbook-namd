@@ -37,10 +37,10 @@ variable "vcn_id" { default = "" }
 variable "use_existing_vcn" { default = false }
 variable "public_subnet_id" { default = "" }
 variable "private_subnet_id" { default = "" }
-variable "vcn_subnet" { default = "" }
-variable "public_subnet" { default = "" }
-variable "additional_subnet" { default = "" }
-variable "private_subnet" { default = "" }
+variable "vcn_subnet" { default = "172.16.0.0/21" }
+variable "public_subnet" { default = "172.16.0.0/24" }
+variable "additional_subnet" { default = "172.16.1.0/24" }
+variable "private_subnet" { default = "172.16.4.0/22" }
 variable "ssh_cidr" { default = "0.0.0.0/0" }
 #namd
 variable "namd" { default = true }
