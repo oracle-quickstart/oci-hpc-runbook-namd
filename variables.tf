@@ -1,11 +1,17 @@
-variable "region" {}
+## Copyright © 2022, Oracle and/or its affiliates. 
+## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+
 variable "tenancy_ocid" {}
+variable "region" {}
+variable "fingerprint" {}
+variable "user_ocid" {}
+variable "private_key_path" {}
 variable "targetCompartment" {}
 variable "ad" {}
 variable "ssh_key" {}
 variable "cluster_network" { default = true }
 variable "use_custom_name" {}
-variable "cluster_name" { default = "" }
+variable "cluster_name" { default = false }
 variable "bastion_ad" {}
 variable "bastion_shape" {}
 variable "use_standard_image" {}
@@ -28,7 +34,7 @@ variable "cluster_nfs_path" { default = "/nfs/cluster" }
 variable "scratch_nfs_path" { default = "/nfs/scratch" }
 variable "vcn_compartment" { default = "" }
 variable "vcn_id" { default = "" }
-variable "use_existing_vcn" {}
+variable "use_existing_vcn" { default = false }
 variable "public_subnet_id" { default = "" }
 variable "private_subnet_id" { default = "" }
 variable "vcn_subnet" { default = "" }
@@ -38,8 +44,8 @@ variable "private_subnet" { default = "" }
 variable "ssh_cidr" { default = "0.0.0.0/0" }
 #namd
 variable "namd" { default = true }
-variable "namd_binaries" {}
-variable "namd_model" {}
+variable "namd_binaries" { default = "https://objectstorage.us-phoenix-1.oraclecloud.com/p/3YWzx8pwApyEYHigvRLFdLNlTlOwzp1hBeXwompHxfI/n/hpc/b/HPC_APPS/o/NAMD_2.13_Linux-x86_64-multicore-CUDA.tar"}
+variable "namd_model" { default = "https://objectstorage.us-phoenix-1.oraclecloud.com/p/dtQofvnX4K4BOHfVGuq8oCdtJFt4lP0UXkod1BIQBYk/n/hpc/b/HPC_APPS/o/NAMD_models.tar"}
 variable "slurm" { default = false }
 variable "ldap" { default = true }
 variable "spack" { default = false }
@@ -126,4 +132,9 @@ variable "bastion_username" {
 variable "compute_username" {
   type    = string
   default = "opc"
+}
+
+variable "release" {
+  description = "Reference Architecture Release (OCI Architecture Center)"
+  default     = "1.2"
 }
