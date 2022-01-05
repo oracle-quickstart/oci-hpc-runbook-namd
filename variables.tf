@@ -21,7 +21,7 @@ variable "custom_bastion_image" {
 }
 variable "bastion_boot_volume_size" {}
 variable "cluster_network_shape" { default = "BM.HPC2.36" }
-variable "instance_pool_shape" { default = "VM.Standard2.4" }
+variable "instance_pool_shape" { default = "BM.GPU3.8" }
 variable "node_count" {}
 variable "boot_volume_size" {}
 variable "use_marketplace_image" { default = false }
