@@ -10,8 +10,8 @@ variable "targetCompartment" {}
 variable "ad" {}
 variable "ssh_key" {}
 variable "cluster_network" { default = true }
-variable "use_custom_name" {}
-variable "cluster_name" { default = false }
+variable "use_custom_name" { default = false}
+variable "cluster_name" { default = "" }
 variable "bastion_ad" {}
 variable "bastion_shape" {}
 variable "use_standard_image" {}

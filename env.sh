@@ -18,7 +18,8 @@ export TF_VAR_boot_volume_size=50
 export TF_VAR_node_count=1
 export TF_VAR_use_marketplace_image=false
 export TF_VAR_use_standard_image=true
-export TF_VAR_image="<GPU IMAGE OCID>" # ocid1.image.oc1.iad.aaaaaaaauxiojmykhmae3xcz4c6k2gmbvs6im5mfjg2zsigsvkwpoquhdvja
+export TF_VAR_image_name="Oracle-Linux-7.9-Gen2-GPU-2021.12.14-0"
+export TF_VAR_image=$(oci --region ${TF_VAR_region} compute image list --compartment-id ${TF_VAR_targetCompartment} --all | jq -r '.data[] | select(."display-name"==env.TF_VAR_image_name).id')
 export TF_VAR_instance_pool_shape="BM.GPU3.8"
 export TF_VAR_cluster_network=false
 
