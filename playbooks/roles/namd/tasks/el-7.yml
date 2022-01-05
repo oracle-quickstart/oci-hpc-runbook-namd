@@ -80,6 +80,22 @@
   become: true 
   shell: "chmod +x /nfs/scratch/vmd/vmd-1.9.3/*"
 
+- name: set up VNC
+  become: true
+  shell: |
+    sudo yum -y groupinstall 'Server with GUI'
+    sudo yum -y install tigervnc-server mesa-libGL
+    sudo systemctl set-default graphical.target
+    sudo cp /usr/lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service
+    sudo sed -i 's/<USER>/opc/g' /etc/systemd/system/vncserver@:1.service
+    sudo mkdir /home/opc/.vnc/
+    sudo chown opc:opc /home/opc/.vnc
+    echo 'Hpc123!' | vncpasswd -f > /home/opc/.vnc/passwd
+    chown opc:opc /home/opc/.vnc/passwd
+    chmod 600 /home/opc/.vnc/passwd
+    sudo systemctl start vncserver@:1.service
+    sudo systemctl enable vncserver@:1.service
+
 - name: update bashrc
   blockinfile:
     dest: "/home/opc/.bashrc"
