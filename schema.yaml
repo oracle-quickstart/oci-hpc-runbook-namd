@@ -484,7 +484,7 @@ variables:
     title: "use marketplace image"
     description: "Use marketplace image, otherwise provide custom image OCID"
     required: true
-    default: true
+    default: false
 
   marketplace_listing:
     type: enum
