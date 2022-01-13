@@ -9,7 +9,7 @@ variable "private_key_path" {}
 variable "targetCompartment" {}
 variable "ad" {}
 variable "ssh_key" {}
-variable "cluster_network" { default = true }
+variable "cluster_network" { default = false }
 variable "use_custom_name" { default = false}
 variable "cluster_name" { default = "" }
 variable "bastion_ad" {}
