@@ -84,10 +84,25 @@ private_key_path     = "<pem_private_key_path>"
 region = "<oci_region>"
 
 # Compartment
-compartment_ocid = "<compartment_ocid>"
+targetCompartment = "<compartment_ocid>"
 
 # Availability Domain
-availablity_domain_name = "<availablity_domain_name>" # for example GrCH:US-ASHBURN-AD-1
+ad = "<availablity_domain_name>" # for example GrCH:US-ASHBURN-AD-1
+bastion_ad = "kWVD:AP-OSAKA-1-AD-1"
+
+# Other variables
+ssh_key                  = "<private_ssh_key>"
+bastion_boot_volume_size = 150
+bastion_shape            = "VM.Standard.E3.Flex"
+instance_pool_shape      = "BM.GPU3.8" 
+boot_volume_size         = 100
+node_count               = 2
+use_custom_name          = false
+use_existing_vcn         = false
+use_marketplace_image    = false 
+use_standard_image       = true
+cluster_network          = true # only if instance_pool_shape=BM.GPU3.8
+
 
 ````
 ### Create the Resources
