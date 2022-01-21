@@ -50,6 +50,9 @@ Deploying this architecture on OCI can be done in different ways:
 
 4. Follow the on-screen prompts and instructions to create the stack.
 
+   a. In the Compute node options section, choose the following for the Image OCID `Oracle-Linux-7.9-Gen2-GPU-2021.12.14-0`
+   <img align="center" src="https://github.com/oracle-quickstart/oci-hpc-runbook-gromacs/blob/dev/Images/image_ocid.png" height="180" > 
+
 5. After creating the stack, click **Terraform Actions**, and select **Plan**.
 
 6. Wait for the job to be completed, and review the plan.
