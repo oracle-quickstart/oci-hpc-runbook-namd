@@ -18,7 +18,7 @@ For details of the architecture, see [_Deploy molecular dynamics and NAMD applic
 
 ## Architecture Diagram
 
-![](./images/GPU_arch_draft.png)
+![](https://github.com/oracle-quickstart/oci-hpc-runbook-gromacs/blob/dev/Images/GPU_CN_RefArch.png)
 
 # Login
 Login to the using opc as a username:
@@ -141,11 +141,6 @@ If the provided terraform scripts are used to launch the application, NAMD with 
      * +idlepoll - poll the GPU for results rather than sleeping while idle
      * +commap - communication mapping of the CPU’s with GPU’s
      * output.txt - output file with the analysis
-
-   Example for BM.GPU2.2:
-   ```
-    namd2 +p26 +devices 0,1 +idlepoll +commap 0,14 /mnt/block/work/NAMD_models/apoa1/apoa1.namd > output.txt
-   ```
 
    Example for BM.GPU3.8:
    ```
